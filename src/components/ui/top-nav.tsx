@@ -5,6 +5,7 @@ const links = [
   { href: "/properties", label: "Properties" },
   { href: "/maintenance", label: "Maintenance" },
   { href: "/tenants", label: "Tenants" },
+  { href: "/stitch-review", label: "Stitch Review" },
 ];
 
 export function TopNav() {
