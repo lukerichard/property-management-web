@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARC Property Ops | Job Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1B2A41",
+              "on-primary": "#ffffff",
+              "primary-container": "#d5e3ff",
+              "on-primary-container": "#001c3b",
+              "secondary": "#535f70",
+              "on-secondary": "#ffffff",
+              "secondary-container": "#d7e3f7",
+              "on-secondary-container": "#101c2b",
+              "tertiary": "#006a6a",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#6ff5f5",
+              "on-tertiary-container": "#002020",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-error-container": "#410002",
+              "background": "#fdfcff",
+              "on-background": "#1a1c1e",
+              "surface": "#fdfcff",
+              "on-surface": "#1a1c1e",
+              "surface-variant": "#dfe2eb",
+              "on-surface-variant": "#43474e",
+              "outline": "#73777f",
+              "outline-variant": "#c3c7cf",
+              "surface-container-low": "#f7f9ff",
+              "surface-container": "#f1f4f9",
+              "surface-container-high": "#ebedf3",
+              "surface-container-highest": "#e6e8ee"
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .gauge-conic {
+            background: conic-gradient(#1B2A41 0% 94%, #dfe2eb 94% 100%);
+        }
+        .premium-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-40">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 premium-blur border-b border-outline-variant/30 flex items-center justify-between px-5 h-16">
+<div class="flex items-center h-full">
+<img alt="ARC Property Ops Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhb1NWiiImHozs0UDVy5i-eOBfbl7ly6M8tr9TTKYUdHx0MtQ47cFpX6xExtw61IB6aUjLo3IU73TDXxJU5KOmxOZI-y0S0-E4IYsSARgH2TeJMI3PVLmD1pL3zBkePaGy-RtJR2kWlP4VvOt_2D_0aUSnV_KjMnupwYSE4kq_9i1csEgsdH1CFpWFxY5V5ZmHj3lfmhlCz2f78SeNWJjIHsbtpczQVbYwvnL44qUlpx3octDvwy_RmFbK9k-xHT2IcJUAdiU0u9gY"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-secondary hover:bg-secondary-container/50 transition-colors p-2 rounded-lg active:scale-95" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-4 space-y-6 max-w-md mx-auto">
+<!-- Urgency Header & Ticket ID -->
+<div class="flex justify-between items-center mt-2">
+<div class="inline-flex items-center gap-1.5 bg-error-container text-on-error-container px-3 py-1 rounded-md text-[10px] font-extrabold tracking-widest uppercase border border-error/10">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                CRITICAL URGENCY
+            </div>
+<span class="text-on-surface-variant font-mono font-bold text-xs tracking-tight">#PT-8821</span>
+</div>
+<!-- Main Issue Headline -->
+<section class="space-y-1">
+<h1 class="text-2xl font-extrabold text-on-surface tracking-tight leading-tight">Leaking faucet in Unit 4B</h1>
+<div class="flex items-start gap-1.5 text-on-surface-variant pt-1">
+<span class="material-symbols-outlined text-base mt-0.5 text-primary" data-icon="location_on">location_on</span>
+<p class="text-sm font-medium">Oakwood Residences, 122 Main St, Unit 4B</p>
+</div>
+</section>
+<!-- Earnings Bento Card -->
+<div class="bg-primary text-on-primary p-7 rounded-xl overflow-hidden relative shadow-xl border border-white/10">
+<div class="relative z-10 flex flex-col items-center text-center">
+<span class="text-primary-container/80 text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Estimated Payout</span>
+<div class="text-5xl font-extrabold font-headline tracking-tighter">$120 — $180</div>
+</div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-32 h-32 bg-primary-container/10 rounded-full -ml-16 -mb-16 blur-2xl"></div>
+</div>
+<!-- AI Triage Report Section -->
+<section class="bg-surface-container-low rounded-xl p-5 space-y-5 border border-outline-variant/40">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-lg" data-icon="insights">insights</span>
+</div>
+<h2 class="text-base font-bold text-on-surface tracking-tight">AI Diagnostic</h2>
+</div>
+<div class="bg-primary/5 text-primary px-2 py-0.5 rounded border border-primary/20 text-[10px] font-black tracking-wide">
+                    STABLE VERDICT
+                </div>
+</div>
+<div class="space-y-3">
+<!-- Confidence Gauge -->
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg border border-outline-variant/20 shadow-sm">
+<div class="relative flex-shrink-0 w-12 h-12 rounded-full gauge-conic flex items-center justify-center">
+<div class="w-9 h-9 bg-white rounded-full flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">94%</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Confidence</p>
+<p class="text-sm font-bold text-on-surface">Verified System Match</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-white p-3.5 rounded-lg border border-outline-variant/20 shadow-sm">
+<p class="text-[9px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Issue Type</p>
+<p class="font-bold text-on-surface text-sm">Plumbing</p>
+</div>
+<div class="bg-error/5 p-3.5 rounded-lg border border-error/20 shadow-sm">
+<p class="text-[9px] text-error font-bold uppercase tracking-wider mb-1">Urgency</p>
+<p class="font-bold text-error text-sm uppercase">Critical</p>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg border border-outline-variant/20 shadow-sm">
+<p class="text-[9px] text-on-surface-variant font-bold uppercase tracking-wider mb-1.5">Actionable Insight</p>
+<p class="font-medium text-on-surface text-sm leading-relaxed">
+                        Likely <span class="text-primary font-bold border-b-2 border-primary/20">worn washer</span> or damaged internal cartridge causing continuous high-pressure flow.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Tenant Intake Section -->
+<section class="space-y-3">
+<h2 class="text-base font-bold text-on-surface px-1">Evidence Summary</h2>
+<div class="bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant/40">
+<div class="p-4 bg-surface-container italic text-on-surface-variant leading-relaxed text-sm border-b border-outline-variant/20">
+                    "Hey, the kitchen faucet is leaking pretty bad, water is starting to pool under the sink. Help!"
+                </div>
+<div class="relative h-56 w-full bg-slate-200">
+<img alt="Close up of a leaking kitchen faucet" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1gTicUIZxZDX2zpUF9Oez0XUG8SuoVKOsYtulOyUQoadBd35NakLPQyaBkk2q_4UO1mWxJAdqIHkGkR0jpn7ThKG3je1IVTL1uPWQYme9UX8LmdwRSwDXM-uPHnEhtDyzXKQocATfnvIGbQpjECAlkvCgM2PRkUEboeQUtAxm7RsuSVige89lV1102HkOztl5q4eW--58pnywROjEb_4PLm3lbYu769x-esAbrDuC4DXTMciSE3nnEHrqzZ3BtcwQ5PDDk_TcUjv5"/>
+<div class="absolute bottom-3 left-3 bg-primary/80 premium-blur text-white text-[9px] px-2.5 py-1 rounded font-bold uppercase tracking-widest border border-white/20">
+                        attachment_01.jpg
+                    </div>
+</div>
+</div>
+</section>
+<!-- Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-white/90 premium-blur px-5 pb-10 pt-5 flex flex-col gap-3 border-t border-outline-variant/30 z-40">
+<button class="w-full bg-primary text-on-primary font-extrabold py-4 rounded-lg text-lg shadow-lg active:scale-[0.98] transition-all tracking-tight">
+                Accept Job
+            </button>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-lg text-lg active:scale-[0.98] transition-all tracking-tight">
+                Decline
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation (Desktop only visible for structure, hidden on mobile per premium pattern) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-3 bg-white border-t border-outline-variant/30 z-50 pointer-events-none opacity-0 md:opacity-100">
+<div class="flex flex-col items-center justify-center bg-primary/5 text-primary rounded-lg px-5 py-1.5">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary px-5 py-1.5">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary px-5 py-1.5">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trade Network Management | PropTriage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#d3e4fe",
+              "secondary-container": "#d5e3fc",
+              "on-primary-fixed-variant": "#394760",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-secondary-fixed-variant": "#3a485b",
+              "on-secondary-fixed": "#0d1c2e",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "on-surface-variant": "#44474d",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#4edea3",
+              "inverse-on-surface": "#eaf1ff",
+              "surface": "#f8f9ff",
+              "secondary-fixed": "#d5e3fc",
+              "tertiary-container": "#00311f",
+              "surface-bright": "#f8f9ff",
+              "on-primary-fixed": "#0c1c32",
+              "on-primary-container": "#8291ad",
+              "surface-container-low": "#eff4ff",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d3e4fe",
+              "on-secondary-container": "#57657a",
+              "secondary-fixed-dim": "#b9c7df",
+              "secondary": "#515f74",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "background": "#f8f9ff",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#0b1c30",
+              "surface-tint": "#505f79",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#d5e3ff",
+              "on-tertiary-fixed": "#002113",
+              "primary-fixed-dim": "#b8c7e5",
+              "primary-container": "#1b2a41",
+              "surface-container-high": "#dce9ff",
+              "outline-variant": "#c5c6ce",
+              "surface-container": "#e5eeff",
+              "on-background": "#0b1c30",
+              "on-tertiary-container": "#00a572",
+              "inverse-primary": "#b8c7e5",
+              "primary": "#05152b",
+              "outline": "#75777e",
+              "tertiary": "#001a0f",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#213145",
+              "surface-dim": "#cbdbf5"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9ff;
+        color: #0b1c30;
+      }
+      h1, h2, h3, .font-headline {
+        font-family: 'Manrope', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 w-full flex justify-between items-center px-8 h-16 z-50 bg-white/70 dark:bg-[#0b1c30]/70 backdrop-blur-xl shadow-[0px_24px_48px_-12px_rgba(11,28,48,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-[#05152b] dark:text-white tracking-tighter">PropTriage</span>
+<nav class="hidden md:flex gap-6 font-['Manrope'] font-semibold text-sm tracking-tight">
+<a class="text-[#44474d] dark:text-[#c5c6ce] hover:text-[#05152b] transition-colors" href="#">Network</a>
+<a class="text-[#44474d] dark:text-[#c5c6ce] hover:text-[#05152b] transition-colors" href="#">Compliance</a>
+<a class="text-[#44474d] dark:text-[#c5c6ce] hover:text-[#05152b] transition-colors" href="#">Payments</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-[#44474d] p-2 rounded-lg hover:bg-[#eff4ff] transition-all cursor-pointer">notifications</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined text-[#44474d] p-2 rounded-lg hover:bg-[#eff4ff] transition-all cursor-pointer">settings</span>
+</div>
+<img alt="Landlord Profile" class="w-8 h-8 rounded-full border border-surface-container-high" data-alt="Professional portrait of a male landlord in business attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCFvs14s3C74GVV6Up71exKb65k6tk0V6-SFWO292fnRnaxhoXNIqYLD0So-yQFb25Tl0jGA7R-q98hkLD2yewYZLv1UsOq5RXbM7ZZYJyx3lyS3b8aI4h36x2MTxa3DTM4up5v7-7NuK0U_EISStL8kukITl8MOESnOMys9w0qJu1BKT_He8vT_P7vW8k6HJ9qQdRi09wmxW4aaVIwaoG4BXP0NcuIMvl-hugzwJZ9kNgT5M33WA436garnBk80MEgBljsrMp2OgM"/>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-white dark:bg-[#0b1c30] flex flex-col py-6 px-4 space-y-8 z-40 hidden md:flex">
+<div class="flex flex-col gap-1 px-2 pt-12">
+<span class="font-['Manrope'] font-extrabold text-[#05152b] dark:text-white text-lg">PropTriage</span>
+<span class="text-xs text-on-surface-variant font-medium">Intelligent Curator</span>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-[#44474d] hover:bg-[#f8f9ff] transition-transform duration-200 hover:translate-x-1 rounded-xl font-medium text-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#44474d] hover:bg-[#f8f9ff] transition-transform duration-200 hover:translate-x-1 rounded-xl font-medium text-sm" href="#">
+<span class="material-symbols-outlined">domain</span> Properties
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#eff4ff] text-[#05152b] font-bold rounded-xl transition-transform duration-200 hover:translate-x-1 text-sm" href="#">
+<span class="material-symbols-outlined">engineering</span> Trade Network
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#44474d] hover:bg-[#f8f9ff] transition-transform duration-200 hover:translate-x-1 rounded-xl font-medium text-sm" href="#">
+<span class="material-symbols-outlined">build</span> Maintenance
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#44474d] hover:bg-[#f8f9ff] transition-transform duration-200 hover:translate-x-1 rounded-xl font-medium text-sm" href="#">
+<span class="material-symbols-outlined">insights</span> Analytics
+            </a>
+</nav>
+<div class="flex flex-col gap-2 pt-4 border-t border-surface-container-low">
+<button class="bg-primary bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-all mb-4">
+                Add New Trade
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-[#44474d] hover:bg-[#f8f9ff] rounded-xl text-sm" href="#">
+<span class="material-symbols-outlined">help</span> Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#44474d] hover:bg-[#f8f9ff] rounded-xl text-sm text-error" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 px-8 pb-16 min-h-screen">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-primary mb-2">Trade Network Management</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg font-medium leading-relaxed">
+                Configure your primary and fallback trades for each category. Monitor performance and compliance at a glance.
+            </p>
+</header>
+<!-- Filter & Search Bar -->
+<section class="mb-10 flex flex-col md:flex-row items-center gap-4 bg-surface-container-low p-4 rounded-2xl">
+<div class="relative flex-grow w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50" placeholder="Search local trade database by name, trade or license..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex items-center gap-2 px-6 py-3 bg-white text-primary font-bold rounded-xl text-sm border-none shadow-sm hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-[20px]">filter_list</span> Filters
+                </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl text-sm border-none shadow-lg active:scale-95 transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">add</span> Add New Trade
+                </button>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Category Selector Rail -->
+<nav class="lg:col-span-3 space-y-2">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 mb-4 px-2">Trade Categories</h3>
+<button class="w-full flex items-center justify-between px-4 py-4 bg-primary text-white rounded-2xl shadow-xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">plumbing</span>
+<span class="font-bold">Plumbing</span>
+</div>
+<span class="bg-white/20 text-xs py-1 px-2 rounded-full">2 Active</span>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-4 hover:bg-white text-on-surface-variant hover:text-primary rounded-2xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">electrical_services</span>
+<span class="font-semibold">Electrical</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-4 hover:bg-white text-on-surface-variant hover:text-primary rounded-2xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">hvac</span>
+<span class="font-semibold">HVAC</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-4 hover:bg-white text-on-surface-variant hover:text-primary rounded-2xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-semibold">General</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-4 hover:bg-white text-on-surface-variant hover:text-primary rounded-2xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-semibold">Landlord/Other</span>
+</div>
+</button>
+</nav>
+<!-- Main Display Area -->
+<div class="lg:col-span-9 space-y-12">
+<!-- Active Trade Dispatch Grid -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-extrabold text-primary">Plumbing Dispatch</h2>
+<span class="bg-tertiary-container/10 text-on-tertiary-container text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-on-tertiary-container rounded-full animate-pulse"></span>
+                            AI TRIAGE ACTIVE
+                        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Primary Card -->
+<div class="bg-white p-6 rounded-2xl shadow-[0px_24px_48px_-12px_rgba(11,28,48,0.06)] border border-white relative overflow-hidden flex flex-col">
+<div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black uppercase tracking-tighter px-4 py-1.5 rounded-bl-xl">Primary</div>
+<div class="flex items-start gap-4 mb-6">
+<img alt="Blue Line Plumbing" class="w-16 h-16 rounded-xl object-cover grayscale-[20%]" data-alt="Close-up of a professional male plumber smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfMVYTghfkvjdJma1z3l7zdxDyuidfxc-CBWXlIo1RMFop9ByBYeG_SptyZCsoLUvYL_LlEEZuqY38f2hJfqMyNfnKb-DNdHtZmg-UXXAylZbNJ7dw2RYxPHUce7fhBMaX09Kbz-cP076UFXhGYMYofBlqiiF4qJWucYno7bVOvMum4kOMh0UjhlHuc0THD-YzxdSeIBDrWDELFItTYchIaeiT93wW4Sqy4cPuLMalwezj4Si_iYxR-oNtMlanNiqW8R-bhIta3noH"/>
+<div>
+<h3 class="text-lg font-bold text-primary leading-tight">Blue Line Plumbing</h3>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs mt-1">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span>contact@blueline.com</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">call</span>
+<span>+1 (555) 012-3456</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-low p-3 rounded-xl">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Response Time</p>
+<p class="text-xl font-headline font-extrabold text-primary">22m</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Success Rate</p>
+<p class="text-xl font-headline font-extrabold text-primary">94%</p>
+</div>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-surface-container-low pt-4">
+<div class="flex items-center gap-2">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container text-[10px] font-black px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span> LICENSED
+                                    </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs font-bold">
+<span class="material-symbols-outlined text-sm text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span> 4.9 (124 Jobs)
+                                </div>
+</div>
+</div>
+<!-- Secondary Card -->
+<div class="bg-white/60 p-6 rounded-2xl shadow-sm border border-surface-container-low relative flex flex-col">
+<div class="absolute top-0 right-0 bg-secondary text-white text-[10px] font-black uppercase tracking-tighter px-4 py-1.5 rounded-bl-xl">Fallback</div>
+<div class="flex items-start gap-4 mb-6">
+<img alt="QuickFix Plumbing" class="w-16 h-16 rounded-xl object-cover opacity-80" data-alt="Professional profile of a technician in a uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeFwm5ODM-4_XMeS0NWqdYSCwJL3XTJL4R5cAYaxkgE9q3lCPV-hdVLv21-6wU4PZK52QjkiEmdYeufLWYK4ClZ_uGxL3a_QCmUg9EfM0AV7nTGcWIQ8WwXUvv9b8qWfJEfj6bxLn2p_dAgqhj1Bvwc6umEzSWgO7dgeOmjAC6coLVIb9xpUOZteNqxrK5t5Xwe2BJsZjHkLRfyI1zlbY9qJHgd9LOR-WFe_j0ektiGEujsaJlu4ZbjSfJgMen8iK90GvB6f7YylKw"/>
+<div>
+<h3 class="text-lg font-bold text-secondary leading-tight">QuickFix Services</h3>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs mt-1">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span>info@quickfix.io</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">call</span>
+<span>+1 (555) 987-6543</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface p-3 rounded-xl border border-surface-container-low">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Response Time</p>
+<p class="text-xl font-headline font-extrabold text-on-surface-variant">45m</p>
+</div>
+<div class="bg-surface p-3 rounded-xl border border-surface-container-low">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Success Rate</p>
+<p class="text-xl font-headline font-extrabold text-on-surface-variant">88%</p>
+</div>
+</div>
+<div class="mt-auto flex items-center justify-between border-t border-surface-container-low pt-4">
+<span class="bg-secondary/10 text-secondary text-[10px] font-black px-2 py-1 rounded-md">ON CALL</span>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs font-bold">
+<span class="material-symbols-outlined text-sm text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span> 4.7 (89 Jobs)
+                                </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendations Section (PropTriage Network) -->
+<section class="bg-primary-container p-8 rounded-[2rem] text-white relative overflow-hidden">
+<!-- Background Design Element -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-tertiary-fixed/10 rounded-full blur-[100px]"></div>
+<div class="absolute -left-20 -bottom-20 w-64 h-64 bg-surface-container-high/10 rounded-full blur-[100px]"></div>
+<div class="relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h2 class="text-3xl font-extrabold mb-2">PropTriage Network Recommendations</h2>
+<p class="text-primary-fixed/70 text-sm max-w-lg font-medium">
+                                    Our vetted local partners. Guaranteed compliance and priority dispatch when your primary network is at capacity.
+                                </p>
+</div>
+<button class="bg-tertiary-fixed text-primary px-6 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined">explore</span> Explore All Partners
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Rec 1 -->
+<div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl hover:bg-white/20 transition-all cursor-pointer border border-white/5 group">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary font-black text-xs">EL</div>
+<div>
+<h4 class="font-bold text-sm">Elite Leak Detection</h4>
+<p class="text-[10px] text-primary-fixed/60">5.0 Star Rated Partner</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-tertiary-fixed">12m response</span>
+<span class="material-symbols-outlined text-tertiary-fixed group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Rec 2 -->
+<div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl hover:bg-white/20 transition-all cursor-pointer border border-white/5 group">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary font-black text-xs">PP</div>
+<div>
+<h4 class="font-bold text-sm">Precision Pipes</h4>
+<p class="text-[10px] text-primary-fixed/60">Top Tier Commercial</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-tertiary-fixed">18m response</span>
+<span class="material-symbols-outlined text-tertiary-fixed group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Rec 3 -->
+<div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl hover:bg-white/20 transition-all cursor-pointer border border-white/5 group">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary font-black text-xs">RM</div>
+<div>
+<h4 class="font-bold text-sm">Rapid Maintenance</h4>
+<p class="text-[10px] text-primary-fixed/60">24/7 Emergency</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-tertiary-fixed">15m response</span>
+<span class="material-symbols-outlined text-tertiary-fixed group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Compliance Alerts Section -->
+<section class="bg-white p-8 rounded-3xl shadow-[0px_24px_48px_-12px_rgba(11,28,48,0.04)]">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-error p-2 bg-error-container rounded-lg">warning</span>
+<h2 class="text-xl font-bold text-primary">Compliance Watchlist</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface rounded-2xl">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div>
+<h5 class="text-sm font-bold text-primary">Blue Line Plumbing</h5>
+<p class="text-xs text-on-surface-variant">General Liability Insurance expires in 4 days</p>
+</div>
+</div>
+<button class="text-primary text-xs font-black uppercase tracking-widest px-4 py-2 border border-primary/10 rounded-lg hover:bg-primary hover:text-white transition-all">Request Doc</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface rounded-2xl opacity-60">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-amber-500"></div>
+<div>
+<h5 class="text-sm font-bold text-primary">SafeSpark Electric</h5>
+<p class="text-xs text-on-surface-variant">Master Plumber License renewal pending verification</p>
+</div>
+</div>
+<button class="text-primary text-xs font-black uppercase tracking-widest px-4 py-2 border border-primary/10 rounded-lg hover:bg-primary hover:text-white transition-all">Verify Status</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>

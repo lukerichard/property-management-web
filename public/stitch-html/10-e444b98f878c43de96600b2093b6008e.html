@@ -1,0 +1,181 @@
+# PropTriage - Product Requirements Document
+**Version 1.0 | March 2026 | Status: Draft**
+-----
+## 1. Executive Summary
+PropTriage is a discount property management platform that replaces the human property manager with an AI-powered triage and dispatch system. Tenants report maintenance issues through any channel (WhatsApp, SMS, email, or voice call), and our AI categorizes the issue, determines urgency, and routes it to the appropriate tradesperson from a pre-configured network.
+The platform targets realtors and small-portfolio landlords managing condo buildings and rental properties who currently pay 8-12% of monthly rent for traditional property management, or worse, handle everything themselves. By automating the most labor-intensive part of property management (fielding calls, diagnosing issues, and dispatching trades), PropTriage delivers the same service at a fraction of the cost.
+Revenue comes from two streams: a monthly SaaS subscription ($49-$199/month based on portfolio size) and a percentage fee (2.5-5%) on all maintenance payments processed through the platform.
+-----
+## 2. Problem Statement
+### 2.1 The Cost Problem
+Traditional property management companies charge 8-12% of monthly gross rent. For a 20-unit building averaging $1,500/month per unit, that is $3,600/month or $43,200/year. A significant portion of this cost covers the labor of a property manager whose primary job is fielding tenant calls, diagnosing maintenance issues, and dispatching the right tradesperson.
+### 2.2 The Realtor Problem
+Many realtors manage small condo buildings as a side service, either as a favor to clients or for modest fees. Maintenance requests are infrequent (5-15/month for a small building), but each one disrupts their primary business of selling real estate. They cannot justify hiring a PM company, but the ad hoc management costs them time and energy disproportionate to the revenue it generates.
+### 2.3 The Tenant Problem
+Tenants often wait hours or days for a response to maintenance requests. Voicemail systems, delayed callbacks, and lost context between the tenant, property manager, and tradesperson create friction and dissatisfaction. Urgent issues like leaks and electrical hazards require immediate action that the current model cannot provide consistently.
+### 2.4 The Misroute Problem
+When a property manager dispatches the wrong trade (sending a handyman for an electrical issue, for example), someone absorbs the cost of a wasted visit. PropTriage addresses this through a dual-confirmation flow: the tenant confirms the AI triage category, and the tradesperson reviews and accepts the job based on the AI report. This shared confirmation creates accountability and reduces misroute liability.
+-----
+## 3. Target Users
+### 3.1 Primary: Realtors Managing Condo Buildings
+- Realtors who manage 1-3 condo buildings (10-75 units total) as a side service
+- Low request volume (5-15 maintenance requests/month per building)
+- Cannot justify 8-12% PM fees for the volume of work
+- Need a solution they can offer to condo boards as a value-add service
+### 3.2 Secondary: Small-Portfolio Landlords
+- Own 2-10 rental properties
+- Currently self-managing to avoid PM fees
+- Want to professionalize their operation without the overhead
+### 3.3 Tertiary: Condo Boards / HOAs
+Condo boards that currently rely on a realtor or volunteer board member to handle maintenance and want a more structured, lower-cost solution.
+-----
+## 4. Core Feature Set
+### 4.1 Multi-Channel Intake
+Tenants can report issues through their preferred channel. The system normalizes all inputs into a standard ticket format for AI processing.
+|Channel |Technology                      |Notes                                                                   |
+|--------|--------------------------------|------------------------------------------------------------------------|
+|WhatsApp|WhatsApp Business API           |Primary channel for tenants. Rich media support (photos, voice notes).  |
+|SMS     |Twilio Programmable SMS         |Fallback for tenants without WhatsApp. Text and image support.          |
+|Email   |SendGrid / Mailgun inbound parse|Supports attachments, photos, longer descriptions.                      |
+|Voice   |Twilio Voice + speech-to-text   |Most complex channel. AI transcribes call, then triages from transcript.|
+### 4.2 AI Triage Engine
+The core differentiator. The AI receives the tenant message (text, transcription, or email body), along with any attached photos, and performs the following:
+1. **Issue Classification:** Categorizes into trade type (Plumber, Electrician, HVAC, Handyman, Landlord/Other)
+1. **Urgency Assessment:** Rates as Critical, High, Medium, or Low based on safety risk, water damage potential, and habitability impact
+1. **Report Generation:** Creates a structured summary for the tradesperson including the original tenant description, AI interpretation, suggested diagnosis, and urgency rationale
+1. **Confidence Scoring:** Outputs a confidence percentage. Tickets below 70% confidence are flagged for manual landlord review
+1. **Routing Decision:** Matches to the best available tradesperson based on trade type, availability, proximity, and past performance
+### 4.3 Dual-Confirmation Flow
+This is the liability protection mechanism. No work is dispatched without two confirmations:
+**Step 1, Tenant Confirmation:** After AI triage, the tenant receives a message: “We think this is a plumbing issue. A plumber would be dispatched. Does that sound right?” The tenant can confirm, correct, or add detail. This creates a record that the tenant agreed with the categorization.
+**Step 2, Trade Confirmation:** The matched tradesperson receives the full AI report and can accept or decline the job. If the report description clearly does not match their trade, they decline and the ticket is re-routed. This creates a second layer of validation.
+**Liability Outcome:** If the tenant confirms “plumbing issue” and the plumber accepts, but the actual problem turns out to be electrical, the confirmation trail shows both parties agreed based on the information available. The platform facilitated a good-faith triage, not a guarantee of diagnosis.
+### 4.4 Trade Network Management
+Landlords configure their preferred tradespeople per category. The system supports:
+- **Bring Your Own Trades:** Landlords add their existing plumber, electrician, etc. with contact info and availability
+- **PropTriage Network:** A curated marketplace of vetted tradespeople that landlords can opt into per trade category
+- **Fallback Routing:** If the primary trade is unavailable, the system auto-routes to the next available in the same category
+- **Performance Tracking:** Response time, acceptance rate, tenant ratings, and completion time per tradesperson
+### 4.5 Payment Processing
+All maintenance payments flow through PropTriage. This serves three purposes:
+1. **Revenue:** PropTriage charges a processing fee (2.5-5% based on subscription tier) on every transaction
+1. **Convenience:** Landlords never chase invoices. Trades invoice through the platform, landlords approve and pay through the platform
+1. **Stickiness:** Once payment relationships run through PropTriage, switching costs increase significantly. This is the platform moat
+### 4.6 Landlord Dashboard
+A web-based dashboard providing:
+- Real-time ticket feed with status tracking
+- AI triage accuracy metrics and confidence scoring
+- Trade network management (add, remove, set availability)
+- Payment history and financial reporting
+- Override controls for manual triage when needed
+- Monthly cost savings report vs. traditional PM fees
+-----
+## 5. User Flows
+### 5.1 Tenant Maintenance Request Flow
+|Step|Action                                                           |Actor            |System Response                           |
+|----|-----------------------------------------------------------------|-----------------|------------------------------------------|
+|1   |Tenant sends message describing issue via preferred channel      |Tenant           |Acknowledge receipt within 5 seconds      |
+|2   |AI processes message, classifies issue, assigns trade and urgency|System (AI)      |Generate triage report (target: <30 sec)  |
+|3   |Tenant receives triage summary and confirms or corrects category |Tenant           |Send confirmation request via same channel|
+|4   |System dispatches job to matched tradesperson with full AI report|System           |Notify trade via SMS/email/app with report|
+|5   |Tradesperson reviews report and accepts or declines              |Tradesperson     |If declined, auto-route to next available |
+|6   |Tradesperson completes work and submits invoice through platform |Tradesperson     |Notify landlord for payment approval      |
+|7   |Landlord approves payment, tenant confirms resolution            |Landlord + Tenant|Process payment, close ticket             |
+### 5.2 Tradesperson Acceptance Flow
+When a job is dispatched, the tradesperson receives a notification containing: the AI triage report (issue summary, urgency, suggested diagnosis), tenant contact information and unit address, photos if provided by the tenant, and an accept/decline interface. On acceptance, they provide an estimated arrival time and can message the tenant directly through the platform.
+### 5.3 Payment Flow
+After completing a job, the tradesperson submits an invoice through the platform. The landlord receives a notification to review and approve. Upon approval, payment is processed through Stripe Connect (or equivalent), with PropTriage deducting the processing fee before releasing funds to the tradesperson. Both parties receive receipts, and the transaction is linked to the original ticket for audit purposes.
+-----
+## 6. Pricing Model
+|                      |Starter              |Professional  |Portfolio|
+|----------------------|---------------------|--------------|---------|
+|Monthly Price         |$49/mo               |$99/mo        |$199/mo  |
+|Unit Limit            |Up to 20 units       |Up to 75 units|Unlimited|
+|Payment Processing Fee|5%                   |3.5%          |2.5%     |
+|Custom Trade Network  |No (platform network)|Yes           |Yes      |
+|White-Label           |No                   |No            |Yes      |
+|API Access            |No                   |Yes           |Yes      |
+### 6.1 Cost Comparison
+For a 20-unit building with average rent of $1,500/month:
+- Traditional PM (10%): $3,000/month = $36,000/year
+- PropTriage Starter: $49/month + ~$200/month in processing fees = ~$3,000/year
+- **Annual savings: ~$33,000 (91% reduction)**
+### 6.2 Revenue Projections (Year 1 Target)
+|Metric                            |Target                         |
+|----------------------------------|-------------------------------|
+|Accounts (Year 1)                 |50 accounts                    |
+|Avg. Subscription Revenue         |$75/mo per account = $45,000/yr|
+|Avg. Maintenance Spend per Account|$2,000/mo = $1.2M total/yr     |
+|Processing Revenue (avg 4%)       |$48,000/yr                     |
+|**Total Year 1 Revenue**          |**~$93,000**                   |
+-----
+## 7. Technical Architecture
+### 7.1 System Components
+|Component         |Technology                                |Purpose                                                 |
+|------------------|------------------------------------------|--------------------------------------------------------|
+|AI Triage Engine  |Claude API (Anthropic)                    |Issue classification, urgency scoring, report generation|
+|Messaging Gateway |Twilio (SMS/Voice) + WhatsApp Business API|Multi-channel intake and outbound communication         |
+|Email Processing  |SendGrid Inbound Parse                    |Email intake and parsing                                |
+|Payment Processing|Stripe Connect                            |Multi-party payments with platform fee extraction       |
+|Backend           |Node.js / Next.js API routes              |Business logic, ticket management, routing              |
+|Database          |PostgreSQL + Supabase                     |Ticket storage, user data, audit logs                   |
+|Frontend          |Next.js + React                           |Landlord dashboard, trade portal                        |
+|Speech-to-Text    |Twilio / Deepgram                         |Voice call transcription for AI processing              |
+### 7.2 AI Triage Prompt Strategy
+The AI triage engine uses a structured prompt that includes: the tenant message (raw text or transcription), any photo descriptions (via vision model), the property profile (building type, known issues, recent history), and the available trade categories with definitions. The model returns a JSON response containing trade classification, confidence score, urgency level, structured summary, and suggested diagnosis. Tickets with confidence below 70% are flagged for landlord review rather than auto-dispatching.
+-----
+## 8. Competitive Landscape
+|Competitor    |What They Do                                      |Gap                                                                            |PropTriage Advantage                                         |
+|--------------|--------------------------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------|
+|Buildium      |Full-stack PM software (rent, leases, maintenance)|No AI triage. No trade dispatch. Tenant submits ticket, PM handles manually.   |AI eliminates the manual triage step entirely                |
+|AppFolio      |PM software with some AI features                 |AI focused on leasing (screening, listings). Maintenance still manual dispatch.|AI focused specifically on maintenance triage and dispatch   |
+|RentRedi      |Budget PM tool for landlords                      |Basic maintenance request forms. No intelligent routing.                       |Intelligent routing with trade network and payment processing|
+|TenantCloud   |Free/low-cost PM for small landlords              |Manual everything. No AI. No trade network.                                    |Full automation from intake to payment                       |
+|Traditional PM|Human property manager (8-12% of rent)            |Expensive. Slow response. Not available 24/7.                                  |90%+ cost reduction. Instant response. Always available.     |
+-----
+## 9. MVP Scope
+The MVP focuses on proving the AI triage accuracy and the dual-confirmation flow work in production with real tenants and real trades.
+### 9.1 MVP Includes
+- SMS and email intake (WhatsApp and voice deferred to v1.1)
+- AI triage with confidence scoring for 5 trade categories
+- Tenant confirmation flow via SMS
+- Tradesperson notification and accept/decline via SMS
+- Basic landlord dashboard (ticket feed, triage log, trade management)
+- Stripe Connect payment processing
+- Full audit trail for every ticket
+### 9.2 MVP Excludes (v1.1+)
+WhatsApp Business API integration, voice call intake with speech-to-text, tenant mobile app, rent collection, lease management, background checks, PropTriage trade marketplace, white-label option, and API access. These features are deferred to future releases after validating the core triage and dispatch loop.
+-----
+## 10. Success Metrics
+|Metric                  |Target (MVP)                      |Target (6 Months)                 |
+|------------------------|----------------------------------|----------------------------------|
+|AI Triage Accuracy      |>85% correct routing              |>92% correct routing              |
+|Tenant Confirmation Rate|>80% confirm without correction   |>90% confirm without correction   |
+|Trade Acceptance Rate   |>70% accept on first dispatch     |>85% accept on first dispatch     |
+|Avg. Time to Dispatch   |<5 minutes                        |<3 minutes                        |
+|Landlord NPS            |>40                               |>60                               |
+|Payment Adoption        |>50% of jobs paid through platform|>80% of jobs paid through platform|
+-----
+## 11. Risks and Mitigations
+|Risk                                                           |Severity|Likelihood|Mitigation                                                                                                           |
+|---------------------------------------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------------|
+|AI misroutes a critical issue (e.g., gas leak sent to handyman)|High    |Low       |Critical safety keywords trigger immediate landlord alert + 911 advisory. Dual confirmation adds safety net.         |
+|Trade network supply is insufficient in a market               |High    |Medium    |Landlords can add own trades. Platform network is supplementary, not primary.                                        |
+|Tenants ignore confirmation step                               |Medium  |Medium    |Auto-confirm after 15 minutes for high-urgency tickets with a note in the audit log.                                 |
+|Landlords bypass platform payments                             |Medium  |High      |Make invoicing and payment the path of least resistance. Track jobs without payment as a friction signal.            |
+|Competitor adds AI triage to existing PM tool                  |Medium  |Medium    |Speed to market. Trade network + payment processing creates switching costs they cannot replicate with a feature add.|
+-----
+## 12. Roadmap
+|Phase|Timeline         |Key Deliverables                                                                           |
+|-----|-----------------|-------------------------------------------------------------------------------------------|
+|MVP  |Q2 2026 (8 weeks)|SMS/email intake, AI triage, dual confirmation, basic dashboard, Stripe payments           |
+|v1.1 |Q3 2026          |WhatsApp integration, voice call support, tenant mobile app, improved AI with learning loop|
+|v1.2 |Q4 2026          |PropTriage trade marketplace, white-label, API, analytics dashboard                        |
+|v2.0 |Q1 2027          |Rent collection, lease management, full property management suite                          |
+-----
+## 13. Open Questions
+1. **Regulatory:** What licensing requirements exist for property management software vs. property management services in Ontario and other target markets?
+1. **Liability:** Should PropTriage carry errors and omissions insurance for misrouted critical issues, or does the dual-confirmation flow sufficiently limit platform liability?
+1. **Trade Network:** Build the marketplace from day one, or focus exclusively on bring-your-own-trade for MVP and add the marketplace later?
+1. **Voice Channel:** Is voice call intake critical for MVP, or can it be deferred? What percentage of maintenance requests come in by phone vs. text?
+1. **Payment Enforcement:** How aggressively should the platform require payments to flow through it? Optional vs. mandatory for different tiers?

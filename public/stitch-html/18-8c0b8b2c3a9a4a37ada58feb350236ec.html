@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PropTriage | Landlord Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "inverse-on-surface": "#eaf1ff",
+              "on-tertiary-fixed": "#002113",
+              "primary-fixed": "#d5e3ff",
+              "surface": "#f8f9ff",
+              "error-container": "#ffdad6",
+              "surface-dim": "#cbdbf5",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#1b2a41",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c7e5",
+              "on-tertiary-container": "#00a572",
+              "outline": "#75777e",
+              "secondary-fixed": "#d5e3fc",
+              "on-error": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "secondary": "#515f74",
+              "secondary-container": "#d5e3fc",
+              "on-secondary-container": "#57657a",
+              "on-tertiary-fixed-variant": "#005236",
+              "tertiary-fixed-dim": "#4edea3",
+              "outline-variant": "#c5c6ce",
+              "on-secondary-fixed": "#0d1c2e",
+              "on-surface-variant": "#44474d",
+              "primary": "#05152b",
+              "on-background": "#0b1c30",
+              "surface-variant": "#d3e4fe",
+              "secondary-fixed-dim": "#b9c7df",
+              "tertiary": "#001a0f",
+              "on-secondary-fixed-variant": "#3a485b",
+              "inverse-surface": "#213145",
+              "on-primary-fixed": "#0c1c32",
+              "surface-tint": "#505f79",
+              "on-primary-container": "#8291ad",
+              "surface-bright": "#f8f9ff",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#00311f",
+              "on-surface": "#0b1c30",
+              "surface-container-highest": "#d3e4fe",
+              "surface-container-low": "#eff4ff",
+              "primary-fixed-dim": "#b8c7e5",
+              "on-primary-fixed-variant": "#394760",
+              "tertiary-fixed": "#6ffbbe",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#dce9ff",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1, h2, h3, .font-headline {
+        font-family: 'Manrope', sans-serif;
+      }
+      .ai-card-gradient {
+        background: linear-gradient(135deg, #05152b 0%, #0c1c32 100%);
+      }
+      .ai-glow {
+        box-shadow: 0 0 40px rgba(111, 251, 190, 0.15);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Sidebar Navigation (Consistent with SCREEN_7) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 gap-2 border-r-0 bg-slate-50 w-64 z-40 hidden md:flex">
+<div class="mb-8 px-4 py-2">
+<h1 class="text-lg font-black text-slate-900 font-headline">PropTriage</h1>
+<p class="text-xs text-slate-500 font-manrope">AI Property Concierge</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 bg-white text-slate-900 rounded-xl px-4 py-3 shadow-sm font-manrope font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 font-manrope font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Properties</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 font-manrope font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span>Tickets</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 font-manrope font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Financials</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 font-manrope font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary text-white rounded-xl py-4 px-6 flex items-center justify-center gap-2 font-headline font-bold active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Request
+        </button>
+</aside>
+<!-- Top Navigation (Consistent with SCREEN_7) -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 h-16 z-50 bg-white/70 backdrop-blur-xl shadow-sm md:pl-72">
+<div class="flex items-center gap-4">
+<button class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<nav class="hidden md:flex gap-8">
+<a class="text-slate-900 font-bold border-b-2 border-primary font-manrope text-sm font-medium" href="#">Overview</a>
+<a class="text-slate-500 hover:text-slate-900 font-manrope text-sm font-medium" href="#">Activity Log</a>
+<a class="text-slate-500 hover:text-slate-900 font-manrope text-sm font-medium" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search properties or tickets..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-100 rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-slate-600" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-slate-200" data-alt="Portrait of a professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvlqYSn9Q5SUhUOqd2Cw-6tO6fshEXkzVb8gRSL87kdvMTq8zSHcwB63qNUy3Y7El9Igcwob0nD7PR0PGktWepwyfCv2lQJ51jvL-GirjFpZjM63QZK_DwnQeLUGf_qVZ0WamT_-8fUs0GQG95bW7VDLNckeQqAiLz_dMMrywWtbOdFWtbV-HS4KoU6ewB4bpfYt13QfrisdshqB4VXYpQNBpJoNqowrZcSwnuiWLBG5cO_jjb7woC7BC6sbrD7dCu2_dMdk2nu5NH"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="md:pl-72 pt-24 pb-12 px-6 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2 font-headline">Portfolio Overview</h1>
+<p class="text-on-surface-variant font-medium">Welcome back, Arthur. 12 active triage processes in progress.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest text-primary px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all hover:bg-surface-variant active:scale-95">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                    Export Data
+                </button>
+</div>
+</header>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Active Tickets -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm flex flex-col justify-between border border-slate-100">
+<div>
+<span class="text-on-surface-variant font-black text-[10px] uppercase tracking-[0.2em]">Active Tickets</span>
+<div class="flex items-baseline gap-2 mt-4">
+<span class="text-5xl font-black font-headline text-primary">24</span>
+<span class="text-on-tertiary-container text-xs font-black uppercase">+3 today</span>
+</div>
+</div>
+<div class="mt-8 flex gap-2">
+<div class="h-1.5 w-1/3 bg-primary rounded-full"></div>
+<div class="h-1.5 w-1/3 bg-surface-container-high rounded-full opacity-30"></div>
+<div class="h-1.5 w-1/3 bg-surface-container-high rounded-full opacity-30"></div>
+</div>
+</div>
+<!-- Pending Payments -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm flex flex-col justify-between border border-slate-100">
+<div>
+<span class="text-on-surface-variant font-black text-[10px] uppercase tracking-[0.2em]">Pending Payments</span>
+<div class="flex items-baseline gap-2 mt-4">
+<span class="text-5xl font-black font-headline text-primary">$4,820</span>
+<span class="text-on-surface-variant text-[10px] font-black uppercase tracking-widest">Invoices</span>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-2 text-xs font-bold text-on-tertiary-container bg-tertiary-container/10 w-fit px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                    Avg payout 4.2 days
+                </div>
+</div>
+<!-- AI Accuracy (Refined AI Triage Style) -->
+<div class="ai-card-gradient p-8 rounded-[2rem] shadow-lg text-white relative overflow-hidden ai-glow">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-on-primary-container font-black text-[10px] uppercase tracking-[0.2em]">Triage Confidence</span>
+<p class="text-xl font-headline font-black text-tertiary-fixed mt-1">High Priority</p>
+<p class="text-[10px] text-on-primary-container/80 font-black mt-2">Accuracy: 93.4%</p>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-white/10" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-tertiary-fixed" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="14" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-xs font-black">92%</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse shadow-[0_0_8px_rgba(111,251,190,0.5)]"></div>
+<span class="text-[10px] font-black uppercase tracking-widest text-primary-fixed">Dispatch Engine: Optimal</span>
+</div>
+</div>
+<!-- Background visual -->
+<div class="absolute -right-8 -bottom-8 opacity-5">
+<span class="material-symbols-outlined text-[140px]" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</div>
+</section>
+<!-- Real-Time Ticket Feed -->
+<section class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm mb-12 border border-slate-100">
+<div class="flex justify-between items-center mb-10">
+<h2 class="text-2xl font-black font-headline tracking-tight">Real-Time Ticket Feed</h2>
+<div class="flex gap-3">
+<button class="text-primary text-xs font-black uppercase tracking-widest hover:underline underline-offset-4 px-4">View All</button>
+<button class="bg-surface-container-low text-primary p-2.5 rounded-xl hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] border-none">
+<th class="pb-6 px-4">Issue Description</th>
+<th class="pb-6 px-2">Trade Type</th>
+<th class="pb-6 px-2">Urgency</th>
+<th class="pb-6 px-2">Status</th>
+<th class="pb-6 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-8 divide-transparent">
+<tr class="group hover:bg-slate-50 transition-all rounded-2xl">
+<td class="py-5 px-5 bg-slate-50 group-hover:bg-white rounded-l-[1.5rem] border-y border-l border-slate-100/50">
+<p class="font-black text-on-surface font-headline">Leaking faucet in Unit 4B</p>
+<p class="text-[10px] text-on-surface-variant font-medium mt-1">Oakwood Residences • 2h ago</p>
+</td>
+<td class="py-5 px-2 bg-slate-50 group-hover:bg-white border-y border-slate-100/50">
+<span class="bg-white border border-slate-200 text-primary text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-tighter">Plumbing</span>
+</td>
+<td class="py-5 px-2 bg-slate-50 group-hover:bg-white border-y border-slate-100/50">
+<div class="flex items-center gap-1.5">
+<span class="bg-error-container text-on-error-container text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">Critical</span>
+</div>
+</td>
+<td class="py-5 px-2 bg-slate-50 group-hover:bg-white border-y border-slate-100/50">
+<span class="text-on-tertiary-container font-black text-[10px] uppercase tracking-widest">Trade Dispatched</span>
+</td>
+<td class="py-5 px-5 bg-slate-50 group-hover:bg-white rounded-r-[1.5rem] border-y border-r border-slate-100/50 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-all rounded-2xl">
+<td class="py-5 px-5 bg-slate-50 group-hover:bg-white rounded-l-[1.5rem] border-y border-l border-slate-100/50">
+<p class="font-black text-on-surface font-headline">HVAC system non-responsive</p>
+<p class="text-[10px] text-on-surface-variant font-medium mt-1">The Heights Apt 22 • 5h ago</p>
+</td>
+<td class="py-5 px-2 bg-slate-50 group-hover:bg-white border-y border-slate-100/50">
+<span class="bg-white border border-slate-200 text-primary text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-tighter">Electrical</span>
+</td>
+<td class="py-5 px-2 bg-slate-50 group-hover:bg-white border-y border-slate-100/50">
+<div class="flex items-center gap-1.5">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">High</span>
+</div>
+</td>
+<td class="py-5 px-2 bg-slate-50 group-hover:bg-white border-y border-slate-100/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-lg" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="bg-tertiary-container/10 text-on-tertiary-container font-black text-[10px] px-2 py-0.5 rounded-full uppercase tracking-widest">AI Triage Active</span>
+</div>
+</td>
+<td class="py-5 px-5 bg-slate-50 group-hover:bg-white rounded-r-[1.5rem] border-y border-r border-slate-100/50 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="group flex items-center gap-2 text-primary font-black text-xs uppercase tracking-[0.2em] py-4">
+<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-y-1" data-icon="keyboard_double_arrow_down">keyboard_double_arrow_down</span>
+                    Show 12 more tickets
+                </button>
+</div>
+</section>
+<!-- Lower Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Trade Network -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-slate-100">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl font-black font-headline tracking-tight">Trade Network Overview</h2>
+<span class="bg-tertiary-container text-on-tertiary-container px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">AI Recommended</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-5 rounded-2xl border-l-4 border-tertiary-fixed flex items-center gap-4 group cursor-pointer hover:bg-slate-50 transition-colors">
+<img alt="Plumber avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhaKwX9D4KD4Ae5gDb1ITOkaJ4-8Mh6ClYtSKd93LIcZmd5VH47fE0KHkQ3SGrZtjBhrmjBIF3MSII5rCMFfL9_kMcoVa_sgbcVA9jpNakQ35QC3J52nHeQVA1IhHvLGOCg0UuVBVQQbqzl3ucZ6Xe5bN43u8PZCJxfNcpOqINL6Thmh4PZB6iAql7v1JXLaS9fjHrSU3jIhMDC6SSqzkdJm_1wptKV0qVvJv1J16ZDlINNBI8ZhP94JH5RcyqdIP2uR5yHts8GQud"/>
+<div class="flex-1">
+<h4 class="font-black text-on-surface text-sm font-headline">QuickFix Electrical</h4>
+<p class="text-[10px] text-on-surface-variant font-bold">Response: <span class="text-on-tertiary-container">14 mins</span></p>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-black text-sm">4.9</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl border-l-4 border-primary flex items-center gap-4 group cursor-pointer hover:bg-slate-50 transition-colors">
+<img alt="Tradesperson avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK7BaSSTW3mRD8qGC5wL6doMbA09xlYy6bjW-fHGk7wsiemj8EDOv-7NA9p09m7UXPnHmFEgc27AWWy9eITv2z02nx8E0h16rcdmJQBnP-wDOv2CDHl734gpw0jKhcoorjH652d21KUHGIzu7mdGR4Yjc_HD_41RjABcLoTSOBX3TyUKHsS8CWC-d-xYy9o0XRrKSB5h9gEjSNPsuJlYrJFIQr5ibyA9PriUBvbCveg66MMLRACOrOk7sTMz94IWT_IQafGbFdCrj2"/>
+<div class="flex-1">
+<h4 class="font-black text-on-surface text-sm font-headline">Blue Line Plumbing</h4>
+<p class="text-[10px] text-on-surface-variant font-bold">Response: <span class="text-on-tertiary-container">28 mins</span></p>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-black text-sm">4.8</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Quick Triage Actions -->
+<div class="bg-surface-container-highest rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-primary/5">
+<div class="mb-8">
+<div class="w-16 h-16 bg-white rounded-[1.25rem] flex items-center justify-center shadow-lg mb-4 mx-auto rotate-3">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="shield_with_heart">shield_with_heart</span>
+</div>
+<h3 class="text-xl font-black font-headline mb-2">Manual Control</h3>
+<p class="text-xs text-on-surface-variant font-medium px-4">Instant intervention for edge cases or high-value VIP property requests.</p>
+</div>
+<div class="space-y-3 w-full">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest active:scale-95 transition-all shadow-md">Manual Override</button>
+<button class="w-full bg-white text-primary py-4 rounded-xl font-black text-xs uppercase tracking-widest border border-primary/10 hover:bg-slate-50 active:scale-95 transition-all">AI Engine Logs</button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

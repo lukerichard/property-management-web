@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeConfirm | Job Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#001a0f",
+              "surface-dim": "#cbdbf5",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-container": "#d5e3fc",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#75777e",
+              "inverse-surface": "#213145",
+              "tertiary-fixed": "#6ffbbe",
+              "primary-container": "#1b2a41",
+              "primary-fixed": "#d5e3ff",
+              "on-error": "#ffffff",
+              "surface-tint": "#505f79",
+              "secondary-fixed-dim": "#b9c7df",
+              "on-background": "#0b1c30",
+              "surface-bright": "#f8f9ff",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed-variant": "#3a485b",
+              "surface-container-high": "#dce9ff",
+              "primary": "#05152b",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#005236",
+              "secondary-fixed": "#d5e3fc",
+              "on-secondary-container": "#57657a",
+              "outline-variant": "#c5c6ce",
+              "on-surface": "#0b1c30",
+              "background": "#f8f9ff",
+              "on-surface-variant": "#44474d",
+              "on-primary-fixed": "#0c1c32",
+              "surface-variant": "#d3e4fe",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface": "#f8f9ff",
+              "secondary": "#515f74",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#b8c7e5",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#394760",
+              "on-primary-container": "#8291ad",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#00311f",
+              "on-secondary-fixed": "#0d1c2e",
+              "on-tertiary-fixed": "#002113",
+              "on-tertiary-container": "#00a572",
+              "inverse-primary": "#b8c7e5",
+              "surface-container": "#e5eeff",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#eff4ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/70 backdrop-blur-xl shadow-sm flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-900" data-icon="gavel">gavel</span>
+<span class="font-manrope font-extrabold text-xl text-slate-900">TradeConfirm</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:bg-slate-200/50 transition-colors p-2 rounded-xl active:scale-95 duration-200" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-4 space-y-6 max-w-md mx-auto">
+<!-- Urgency Header & Ticket ID -->
+<div class="flex justify-between items-center mt-4">
+<div class="inline-flex items-center gap-2 bg-error-container text-on-error-container px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+                CRITICAL URGENCY
+            </div>
+<span class="text-on-surface-variant font-mono font-bold text-sm">#PT-8821</span>
+</div>
+<!-- Main Issue Headline -->
+<section class="space-y-1">
+<h1 class="text-3xl font-extrabold text-on-surface tracking-tight leading-tight">Leaking faucet in Unit 4B</h1>
+<div class="flex items-start gap-2 text-on-surface-variant pt-2">
+<span class="material-symbols-outlined text-base mt-0.5" data-icon="location_on">location_on</span>
+<p class="text-sm font-medium">Oakwood Residences, 122 Main St, Unit 4B</p>
+</div>
+</section>
+<!-- Earnings Bento Card -->
+<div class="bg-primary-container text-white p-6 rounded-full overflow-hidden relative shadow-lg">
+<div class="relative z-10 flex flex-col items-center">
+<span class="text-on-primary-container text-xs font-bold uppercase tracking-widest mb-1">Potential Earnings</span>
+<div class="text-4xl font-extrabold font-headline">$120 - $180</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-50"></div>
+</div>
+<!-- AI Triage Report Section -->
+<section class="bg-surface-container-low rounded-xl p-6 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="auto_awesome">auto_awesome</span>
+<h2 class="text-lg font-bold text-on-surface">AI Triage Report</h2>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed shadow-[0_0_8px_#6ffbbe]"></span>
+                    LIVE ANALYSIS
+                </div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/15">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Issue Type</p>
+<p class="font-bold text-on-surface">Plumbing</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/15">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Suggested Diagnosis</p>
+<p class="font-bold text-on-surface">Worn washer or damaged internal cartridge</p>
+</div>
+<div class="bg-error-container/20 p-4 rounded-xl border border-error/10">
+<p class="text-[10px] text-error font-bold uppercase tracking-wider mb-1">Urgency</p>
+<p class="font-bold text-error">Critical Risk (Water Damage)</p>
+</div>
+</div>
+</section>
+<!-- Tenant Intake Section -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold text-on-surface px-1">Tenant Intake</h2>
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="p-4 bg-surface-container-lowest italic text-on-surface-variant leading-relaxed text-sm border-b border-outline-variant/10">
+                    "Hey, the kitchen faucet is leaking pretty bad, water is starting to pool under the sink. Help!"
+                </div>
+<div class="relative h-48 w-full bg-slate-200">
+<img alt="Close up of a leaking kitchen faucet with water pooling" class="w-full h-full object-cover" data-alt="Close up of a leaking kitchen faucet with water pooling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1gTicUIZxZDX2zpUF9Oez0XUG8SuoVKOsYtulOyUQoadBd35NakLPQyaBkk2q_4UO1mWxJAdqIHkGkR0jpn7ThKG3je1IVTL1uPWQYme9UX8LmdwRSwDXM-uPHnEhtDyzXKQocATfnvIGbQpjECAlkvCgM2PRkUEboeQUtAxm7RsuSVige89lV1102HkOztl5q4eW--58pnywROjEb_4PLm3lbYu769x-esAbrDuC4DXTMciSE3nnEHrqzZ3BtcwQ5PDDk_TcUjv5"/>
+<div class="absolute bottom-3 left-3 bg-black/50 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md font-medium">
+                        ATTACHMENT_01.JPG
+                    </div>
+</div>
+</div>
+</section>
+<!-- Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-2xl px-6 pb-10 pt-4 flex flex-col gap-3 shadow-[0_-8px_30px_rgb(0,0,0,0.04)] z-40">
+<button class="w-full bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-bold py-4 rounded-full text-lg shadow-lg active:scale-95 transition-all">
+                Accept Job
+            </button>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-full text-lg active:scale-95 transition-all">
+                Decline
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Persistent but tucked below actions for hierarchy) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-3 bg-white/80 backdrop-blur-2xl z-50 pointer-events-none opacity-0 md:opacity-100">
+<!-- Hidden on pure mobile focusing on task, but mapping structure as per JSON -->
+<div class="flex flex-col items-center justify-center bg-emerald-50 text-emerald-700 rounded-xl px-5 py-1.5">
+<span class="material-symbols-outlined" data-icon="build_circle">build_circle</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-5 py-1.5">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-5 py-1.5">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Account</span>
+</div>
+</nav>
+</body></html>

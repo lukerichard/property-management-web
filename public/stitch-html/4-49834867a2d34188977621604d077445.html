@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monthly Savings Report | PropTriage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#57657a",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "on-secondary-fixed-variant": "#3a485b",
+              "surface-container": "#e5eeff",
+              "secondary": "#515f74",
+              "secondary-fixed": "#d5e3fc",
+              "primary-container": "#1b2a41",
+              "on-tertiary-container": "#00a572",
+              "on-primary-fixed": "#0c1c32",
+              "surface-variant": "#d3e4fe",
+              "on-primary-container": "#8291ad",
+              "inverse-on-surface": "#eaf1ff",
+              "primary": "#05152b",
+              "surface-tint": "#505f79",
+              "on-surface-variant": "#44474d",
+              "background": "#f8f9ff",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#b9c7df",
+              "surface-bright": "#f8f9ff",
+              "surface-dim": "#cbdbf5",
+              "on-secondary-fixed": "#0d1c2e",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#c5c6ce",
+              "inverse-surface": "#213145",
+              "on-background": "#0b1c30",
+              "tertiary-fixed-dim": "#4edea3",
+              "on-surface": "#0b1c30",
+              "surface-container-low": "#eff4ff",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-container": "#d5e3fc",
+              "tertiary-container": "#00311f",
+              "inverse-primary": "#b8c7e5",
+              "primary-fixed": "#d5e3ff",
+              "on-primary-fixed-variant": "#394760",
+              "on-tertiary-fixed-variant": "#005236",
+              "primary-fixed-dim": "#b8c7e5",
+              "surface-container-high": "#dce9ff",
+              "surface": "#f8f9ff",
+              "outline": "#75777e",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#002113",
+              "error-container": "#ffdad6",
+              "tertiary": "#001a0f"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body { font-family: 'Inter', sans-serif; }
+      h1, h2, h3, .font-display { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm flex justify-between items-center px-6 py-4 w-full">
+<div class="text-2xl font-black text-slate-900 tracking-tighter">PropTriage</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors" href="#">Properties</a>
+<a class="text-slate-900 font-bold border-b-2 border-emerald-500 transition-colors" href="#">Savings Report</a>
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors" href="#">Maintenance</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<img class="w-10 h-10 rounded-full border-2 border-surface-container shadow-sm" data-alt="Landlord profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkpzrYQ1Tjif8yM9bmnuq7BFTHq1_RSFJLUcBCc6Ex8Rvhqrr8q5I3J5KaLsfNs_hSPYTQJ2sQSvx9UzTmHh8_DNLFdtYFpK4VGMeGHPxhw3WTmRq6IgG0hoSPA8rapBtxg_pA752H2tIQ9SMeAPixEdQkf2Wal8LIRc6RGa7vi63YVN--z44PAUB1dyOiTqP-kwcPSHC62fhWS27vh7pbz5Kwmmwxglg6nA6WYuAeIEZGHPe60CFEkjsphZ20nIx2OCQAaFb8aiZ9"/>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 flex flex-col bg-white py-8 z-40">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<div>
+<h2 class="font-manrope font-extrabold text-slate-900 text-lg">PropTriage</h2>
+<p class="text-xs text-on-secondary-container">Intelligent Curator</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-y-2 flex-grow">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:translate-x-1 transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:translate-x-1 transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span>Properties</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:translate-x-1 transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Financials</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-slate-100 text-slate-900 font-bold rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">insert_chart</span>
+<span>Savings Report</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:translate-x-1 transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">build</span>
+<span>Maintenance</span>
+</a>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+                Add Property
+            </button>
+</div>
+<div class="mt-auto flex flex-col gap-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-12 px-6 lg:px-12">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold mb-4">
+<span class="w-2 h-2 bg-tertiary-fixed rounded-full animate-pulse"></span>
+                        AI ANALYTICS ACTIVE
+                    </div>
+<h1 class="text-4xl lg:text-5xl font-extrabold text-primary tracking-tight mb-2">Savings Report</h1>
+<p class="text-on-secondary-container text-lg max-w-2xl">Visualizing your portfolio's capital efficiency and the direct impact of the PropTriage ecosystem.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-highest text-primary font-bold rounded-xl flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">download</span> Export PDF
+                    </button>
+<button class="px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg active:scale-95 transition-transform">
+                        Monthly Review
+                    </button>
+</div>
+</div>
+</header>
+<!-- Top Metrics: Bento Grid Layout -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Main Savings Card -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-full p-8 relative overflow-hidden flex flex-col justify-between min-h-[280px]">
+<div class="absolute top-0 right-0 w-64 h-64 bg-tertiary-fixed/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div>
+<h3 class="text-on-secondary-container font-semibold uppercase tracking-wider text-sm mb-2">Annual Projected Savings</h3>
+<div class="flex items-baseline gap-4">
+<span class="text-6xl font-black text-primary tracking-tighter">$33,120</span>
+<div class="flex items-center text-on-tertiary-container font-bold text-lg">
+<span class="material-symbols-outlined">trending_up</span> 91% Reduction
+                        </div>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-6">
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-4 border-white object-cover" data-alt="Luxury property 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2f6NR2f_gt8sZB8M8yWpEQWzXcUzDBPzVyXtoYOWVt6VIcKYXkWC0edXBKxDLxKmcE1vY0NFXzZumtM_2ryUlFcO0ApQV570eQHh5zdhR0Adswnd3dpSGdohD_4AexeXKuNOWuP5N4AbEUlRnHLYTlbL5TOicQ3G2Drdsn8zBKpO5qdOss3vABPqGR2mD99RthapetrOANPQx9A9knXdXhyV5KfwvQ3Ayo73aRWCjgZWN7tecxy0K2BDTNYxaglMVkQKB5IsE8w3E"/>
+<img class="w-12 h-12 rounded-full border-4 border-white object-cover" data-alt="Modern house 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSeJJWu8UIROLuemmBUlGqW9hZ0F8KG2Q-miTJ5WwimXDbLoBCp34ajH2fpEsQKqJ_o7kXjfF3uft3RYMbM4vM15cR1Oiu6chcXXlUrvkO4WJfw93jZijl1NEjFVhyfK9w8b0it9TFN350Ql8Zw11f2Bg9kCXtxBl6cWVzTWcFeH7q8hPwToJcpSaf3ANdGcURjf1md6UPd8pbPXWK50_u6yNTSvY52h-ICdJ2wabP87lrVnXTuuL6RRVXTE_kZdBHKEKC_KZBucIu"/>
+<div class="w-12 h-12 rounded-full border-4 border-white bg-surface-container flex items-center justify-center text-xs font-bold text-primary">20+</div>
+</div>
+<p class="text-on-secondary-container text-sm font-medium">Across your 20-unit luxury portfolio in downtown Seattle.</p>
+</div>
+</div>
+<!-- Secondary Metrics Column -->
+<div class="space-y-6">
+<div class="bg-surface-container-low rounded-full p-6 flex flex-col justify-center">
+<p class="text-on-secondary-container text-xs font-bold uppercase tracking-widest mb-1">Monthly Savings</p>
+<p class="text-3xl font-extrabold text-primary">$2,760.00</p>
+</div>
+<div class="bg-surface-container-low rounded-full p-6 flex flex-col justify-center border-l-4 border-tertiary-fixed-dim">
+<p class="text-on-secondary-container text-xs font-bold uppercase tracking-widest mb-1">Avg Cost Per Unit</p>
+<p class="text-3xl font-extrabold text-primary">$18.50<span class="text-sm font-normal text-on-secondary-container ml-2">/mo</span></p>
+</div>
+</div>
+</section>
+<!-- Comparison Visual: Asymmetric Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
+<!-- The Chart/Comparison Panel -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-full p-10">
+<h3 class="text-2xl font-extrabold text-primary mb-8">Cost Model Comparison</h3>
+<div class="space-y-10">
+<!-- Traditional PM -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-on-secondary-container font-bold">Traditional Property Management (10% Fee)</span>
+<span class="text-xl font-bold text-primary">$3,640/mo</span>
+</div>
+<div class="w-full bg-surface-container-low h-4 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim w-full"></div>
+</div>
+</div>
+<!-- PropTriage -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div class="flex items-center gap-2">
+<span class="text-primary font-black">PropTriage SaaS Ecosystem</span>
+<span class="px-2 py-0.5 bg-primary-fixed text-primary text-[10px] font-bold rounded">OPTIMIZED</span>
+</div>
+<span class="text-xl font-bold text-on-tertiary-container">$880/mo</span>
+</div>
+<div class="w-full bg-surface-container-low h-8 rounded-full overflow-hidden flex">
+<div class="h-full bg-primary w-[15%] flex items-center px-4 overflow-hidden">
+<span class="text-[10px] text-white font-bold whitespace-nowrap">SaaS FEE</span>
+</div>
+<div class="h-full bg-tertiary-fixed w-[10%] flex items-center px-4 overflow-hidden">
+<span class="text-[10px] text-on-tertiary-fixed font-bold whitespace-nowrap">PROC.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/15 flex flex-wrap gap-8">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></div>
+<span class="text-xs font-semibold text-on-secondary-container">Standard Management</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs font-semibold text-on-secondary-container">PropTriage Base</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed"></div>
+<span class="text-xs font-semibold text-on-secondary-container">5% Processing</span>
+</div>
+</div>
+</div>
+<!-- AI Recommendation: Floating Glass Panel -->
+<div class="lg:col-span-4 flex">
+<div class="w-full bg-gradient-to-br from-primary to-primary-container rounded-full p-8 text-on-primary relative flex flex-col justify-between shadow-2xl">
+<div class="absolute -top-6 -right-6 w-24 h-24 bg-tertiary-fixed/20 rounded-full blur-2xl"></div>
+<div>
+<div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+<span class="material-symbols-outlined text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Strategic Triage Recommendation</h4>
+<p class="text-on-primary-container leading-relaxed mb-6">Based on your current transaction volume of <span class="text-white font-bold">$42,000/mo</span>, you are losing potential margin to processing fees.</p>
+<div class="bg-white/5 rounded-2xl p-4 border border-white/10 mb-6">
+<p class="text-xs font-bold text-tertiary-fixed uppercase mb-2">Potential Gain</p>
+<p class="text-2xl font-black">+$4,200 <span class="text-sm font-normal opacity-70">Annual</span></p>
+</div>
+</div>
+<button class="w-full py-4 bg-tertiary-fixed text-on-tertiary-fixed font-black rounded-xl hover:shadow-[0_0_20px_rgba(111,251,190,0.4)] transition-all">
+                        Upgrade to Portfolio Tier
+                    </button>
+</div>
+</div>
+</section>
+<!-- Breakdown: Data List -->
+<section class="bg-surface-container-low rounded-full p-8 lg:p-12">
+<div class="flex items-center justify-between mb-10">
+<h3 class="text-2xl font-extrabold text-primary">Unit Savings Breakdown</h3>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-white text-primary text-xs font-bold rounded-lg border border-outline-variant/20">Filter</button>
+<button class="px-4 py-2 bg-white text-primary text-xs font-bold rounded-lg border border-outline-variant/20">Sort</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Table Header -->
+<div class="grid grid-cols-12 px-6 py-3 text-[10px] font-black text-on-secondary-container uppercase tracking-[0.2em]">
+<div class="col-span-5">Property Name</div>
+<div class="col-span-2 text-right">Units</div>
+<div class="col-span-2 text-right">Trad. Fee</div>
+<div class="col-span-3 text-right">Net Savings</div>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-12 px-6 py-5 bg-surface-container-lowest rounded-full items-center transition-transform hover:-translate-y-1 duration-200">
+<div class="col-span-5 flex items-center gap-4">
+<img class="w-10 h-10 rounded-lg object-cover" data-alt="The Beacon building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8IhxBno39R4Yl5-9uAyfX-ljichmXILWqobXXlVHXu6iQQIyJj4rrlTU_n0_E6dvZndkQsFutWKgqSiF53n0BHIyKI1sFbuJsoWhhJp5C8sxG-KmIutX4jdGV8Qi0QWkV9gq88dbx8f-heostZqBO9SZ0J8V3h-pCntvBHav4hIbHjW0hJoZvwcXWhBBHa55TQuahKg79fvzSQFrOzOiJcCjn4VL4PPOELL_DweEyPvUMGAEGxUgleHQTxiolFBiNpPOzlhI3hf_J"/>
+<div>
+<p class="font-bold text-primary">The Beacon Residences</p>
+<p class="text-xs text-on-secondary-container">Seattle, WA</p>
+</div>
+</div>
+<div class="col-span-2 text-right font-semibold text-primary">12 Units</div>
+<div class="col-span-2 text-right text-on-secondary-container">$2,140</div>
+<div class="col-span-3 text-right font-black text-on-tertiary-container">+$1,860.00</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 px-6 py-5 bg-surface-container-lowest rounded-full items-center transition-transform hover:-translate-y-1 duration-200">
+<div class="col-span-5 flex items-center gap-4">
+<img class="w-10 h-10 rounded-lg object-cover" data-alt="Loft living" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl5Ox5M932U8fYIN8J_ukw4ZHau8Bpt68mOQnW5IrDYZsIpQTaLn5i0mfmEL2fuS7yDKQVcek-UuxMXPTx2smoQIsrVFlQ5cli_e5cxYqTt6K3foWzwG2zU67oJ1rvoLkn8-d4bHuS2vLXEQZp5-ItFt5cuq2OHmsqSHdfyEhCsxZu3L0x2kb0sRktG_AOfA-i87IUZuuJU-_xcGIviPYIOJyjJ-jqHEzPVHFoYHuCol23PdcqP03o0AXyfUTof_9H-waMoHVRyrZA"/>
+<div>
+<p class="font-bold text-primary">Pike Street Lofts</p>
+<p class="text-xs text-on-secondary-container">Seattle, WA</p>
+</div>
+</div>
+<div class="col-span-2 text-right font-semibold text-primary">8 Units</div>
+<div class="col-span-2 text-right text-on-secondary-container">$1,500</div>
+<div class="col-span-3 text-right font-black text-on-tertiary-container">+$900.00</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 px-6 py-5 bg-surface-container-lowest rounded-full items-center transition-transform hover:-translate-y-1 duration-200">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">apartment</span>
+</div>
+<div>
+<p class="font-bold text-primary">Portfolio Average</p>
+<p class="text-xs text-on-secondary-container">Aggregate Performance</p>
+</div>
+</div>
+<div class="col-span-2 text-right font-semibold text-primary">20 Units</div>
+<div class="col-span-2 text-right text-on-secondary-container">--</div>
+<div class="col-span-3 text-right font-black text-primary">$2,760.00</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full bg-white/90 backdrop-blur-xl flex justify-around items-center py-4 px-2 z-50">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">domain</span>
+<span class="text-[10px] font-bold">Properties</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insert_chart</span>
+<span class="text-[10px] font-bold">Savings</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] font-bold">Billing</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+</body></html>

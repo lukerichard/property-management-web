@@ -6,6 +6,7 @@ const links = [
   { href: "/maintenance", label: "Maintenance" },
   { href: "/tenants", label: "Tenants" },
   { href: "/stitch-review", label: "Stitch Review" },
+  { href: "/stitch-pages", label: "Stitch Pages" },
 ];
 
 export function TopNav() {
