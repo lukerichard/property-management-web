@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARC Property Ops — Asset Preview</title>
+  <style>
+    :root { --navy:#123A56; --text:#2f3a3f; --line:#e4e8ea; --bg:#f7f8fa; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif; color:var(--text); background:var(--bg); }
+    header{ height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 20px; border-bottom:1px solid var(--line); background:#fff; }
+    .layout{ display:grid; grid-template-columns: 1.2fr .8fr; gap:20px; padding:20px; min-height:calc(100vh - 64px); }
+    .pane,.side{ background:#fff; border:1px solid var(--line); border-radius:12px; }
+    .pane{ display:grid; place-items:center; padding:24px; }
+    .checker{ width:min(780px,100%); aspect-ratio: 16/10; border-radius:10px; border:1px solid var(--line); background-image: linear-gradient(45deg,#ececec 25%,transparent 25%),linear-gradient(-45deg,#ececec 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ececec 75%),linear-gradient(-45deg,transparent 75%,#ececec 75%); background-size:28px 28px; background-position:0 0,0 14px,14px -14px,-14px 0; display:grid; place-items:center; }
+    .logo{text-align:center;color:var(--navy)} .logo h1{margin:8px 0 0; font-size:76px; letter-spacing:.04em;} .logo p{margin:8px 0 0; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#60707a}
+    .side{ padding:16px; } .grp{ border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:12px; }
+    .lbl{ font-size:12px; font-weight:600; text-transform:uppercase; color:#5f6b73; margin-bottom:8px; }
+    .row{ display:flex; gap:8px; flex-wrap:wrap; }
+    button{ border:1px solid #cfd6da; background:#fff; border-radius:8px; padding:10px 12px; font-weight:600; cursor:pointer; }
+    button.primary{ background:var(--navy); color:#fff; border-color:var(--navy); width:100%; margin-top:8px; }
+    @media (max-width:960px){ .layout{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header><strong>Brand Assets</strong><span>ARC Logo Preview</span></header>
+  <main class="layout">
+    <section class="pane">
+      <div class="checker">
+        <div class="logo">
+          <svg width="96" height="64" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 54C21 36 37 22 58 22C79 22 96 36 101 54" stroke="#123A56" stroke-width="5" stroke-linecap="round"/><path d="M38 56V42L58 30L78 42V56" stroke="#123A56" stroke-width="4" stroke-linejoin="round"/></svg>
+          <h1>ARC</h1><p>Property Ops</p>
+        </div>
+      </div>
+    </section>
+    <aside class="side">
+      <div class="grp"><div class="lbl">Format</div><div class="row"><button>SVG</button><button>PNG</button><button>PDF</button></div></div>
+      <div class="grp"><div class="lbl">Size</div><div class="row"><button>Small</button><button>Medium</button><button>Large</button></div></div>
+      <div class="grp"><div class="lbl">Palette</div><div class="row"><button>#123A56</button><button>#FFFFFF</button></div></div>
+      <button class="primary">Download Asset</button>
+    </aside>
+  </main>
+</body>
+</html>
