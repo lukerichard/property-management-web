@@ -12,9 +12,15 @@ type StitchIndex = {
   screens: Screen[];
 };
 
+const BASE_PATH = process.env.GITHUB_ACTIONS === "true" ? "/property-management-web" : "";
+
 function getIndex(): StitchIndex {
   const file = path.join(process.cwd(), "public", "stitch-html", "index.json");
   return JSON.parse(fs.readFileSync(file, "utf8")) as StitchIndex;
+}
+
+function withBasePath(url: string): string {
+  return url.startsWith("/") ? `${BASE_PATH}${url}` : url;
 }
 
 export function generateStaticParams() {
@@ -34,7 +40,7 @@ export default async function StitchPage({ params }: { params: Promise<{ slug: s
   return (
     <main className="min-h-screen bg-white">
       {found.localHtmlPath ? (
-        <iframe src={found.localHtmlPath} className="h-screen w-full border-0" title={slug} />
+        <iframe src={withBasePath(found.localHtmlPath)} className="h-screen w-full border-0" title={slug} />
       ) : found.imageUrl ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={found.imageUrl} alt={slug} className="h-auto w-full" />
