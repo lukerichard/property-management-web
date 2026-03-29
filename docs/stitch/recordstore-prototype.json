@@ -1,0 +1,27 @@
+{
+  "projectId": "8642593310320381624",
+  "name": "Record Store Hybrid Ops Prototype",
+  "screens": [
+    {
+      "slug": "dashboard",
+      "title": "Vinyl Vault Dashboard",
+      "screenId": "26a3e7574e17406494e125e2ad699395",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2ZmNDcyYjhkMGQ4MjQwMTZiNTM0MDM2OGNkOTZjYzViEgsSBxCtz862hh0YAZIBIwoKcHJvamVjdF9pZBIVQhM4NjQyNTkzMzEwMzIwMzgxNjI0&filename=&opi=96797242",
+      "imageUrl": "https://lh3.googleusercontent.com/aida/ADBb0ujoZzYuSDz0c39cQa59el5bwVaoHSJZQ2qNeye5CFvP4deOMrfH7W7RoJ-2ThNqtjYbDSV6-F6zFMK9IMxCJY2CDQEPgsFGxwdZSo5bnd4RusFhbNnhIxBjpmL4K8wyQmPioSVqg5xKLDNvCuLVqdvlsS46_sohkmJiyT3JBdlFb-maV3Ixuo-X9TdlFRt_jOLrkmCSCju8oKbZQtfSfliN6qJk84bUvF_9KNwRy81reDWxFpttfLD4KEQ"
+    },
+    {
+      "slug": "catalog-routing",
+      "title": "Catalog Routing",
+      "screenId": "2068b729904c4a72a1ac440a582735d1",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzcwMjFjN2UwYzhiZTQ4YjViOTYxZTA4ZDE1OTMyZWFiEgsSBxCtz862hh0YAZIBIwoKcHJvamVjdF9pZBIVQhM4NjQyNTkzMzEwMzIwMzgxNjI0&filename=&opi=96797242",
+      "imageUrl": "https://lh3.googleusercontent.com/aida/ADBb0uh9WtOTwu_HvirfMiuFzGchaip4GH2yKaFgYVC86NXLJkAnO16ED4q65Znm3b6GucsJjqGPQStZLc94vElnm-JYxzp1cqXA_iyiPrRfTG79BQDgT2ZeCZ_M5usbWBHuIu5Qdz7jvMfMs3gF3N4ouk0UBKf1-jkHt0XCMYGL2HQQ0hiVm67xuKH0DEHJ1KUZhkjEjtvbiaRk4qAkslH7zRuBfMZLx5qPOj7BbIxEW40bMolsHXi_6nMEkXk"
+    },
+    {
+      "slug": "checkout-fulfillment",
+      "title": "Order Checkout & Fulfillment",
+      "screenId": "5353655b6fd143f194168960e29153ff",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzUzYjcwNGQ3NzJhODRmMjE4YmQ5NTE2YzUxMjE0NzM3EgsSBxCtz862hh0YAZIBIwoKcHJvamVjdF9pZBIVQhM4NjQyNTkzMzEwMzIwMzgxNjI0&filename=&opi=96797242",
+      "imageUrl": "https://lh3.googleusercontent.com/aida/ADBb0ugTBwYmUNo3vZQ5ruxaIEPNnyzNJ4_wFyKKkb2v24Go1Q7YOd-W0uqQRVketUU-jtcfTJE5YUv4Zyi3x6pzG_L-czNJ7iEa92URerWP_o5F0EFqPfz5wB85JHKtK8aVaexI0oE2nTDx46VmTrknlVtNKt6I_fxtaXKV9KkfwUWUy_tSCATNWuYV6fn7WIZ32ybffDm-_8t2Tgbtdy-RKXldecSwWGg__2Sg6y8ljMRifvbYUwg-hHdchoE"
+    }
+  ]
+}

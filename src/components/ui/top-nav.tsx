@@ -7,6 +7,7 @@ const links = [
   { href: "/tenants", label: "Tenants" },
   { href: "/stitch-review", label: "Stitch Review" },
   { href: "/stitch-pages", label: "Stitch Pages" },
+  { href: "/recordstore-prototype", label: "Recordstore Proto" },
 ];
 
 export function TopNav() {

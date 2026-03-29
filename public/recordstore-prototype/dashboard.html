@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sonic Architect | Vinyl Vault Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#353534",
+                        "on-surface-variant": "#c3c5d9",
+                        "on-secondary-fixed-variant": "#802a00",
+                        "on-tertiary": "#3a3000",
+                        "inverse-surface": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "on-primary-fixed": "#001550",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#221b00",
+                        "error": "#ffb4ab",
+                        "primary": "#b6c4ff",
+                        "surface-bright": "#393939",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "inverse-on-surface": "#313030",
+                        "on-primary": "#00277f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#531900",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "tertiary-fixed": "#ffe16d",
+                        "secondary-container": "#ff5e07",
+                        "inverse-primary": "#004ee7",
+                        "on-primary-fixed-variant": "#003ab2",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-tint": "#b6c4ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "tertiary-container": "#c9a900",
+                        "tertiary": "#e9c400",
+                        "outline": "#8d90a2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-container": "#4c3f00",
+                        "primary-fixed": "#dce1ff",
+                        "primary-container": "#0057ff",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "surface-container-highest": "#353534",
+                        "surface-dim": "#131313",
+                        "on-secondary": "#5a1b00",
+                        "on-primary-container": "#e5e8ff",
+                        "outline-variant": "#434656",
+                        "on-secondary-fixed": "#370e00",
+                        "secondary": "#ffb59a"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .groove-track {
+            height: 2px;
+            background: #353534;
+            position: relative;
+            overflow: hidden;
+        }
+        .groove-indicator {
+            height: 100%;
+            background: #b6c4ff;
+            box-shadow: 0 0 8px #0057ff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="bg-neutral-900 dark:bg-[#131313] font-['Inter'] tracking-tight text-sm h-full w-64 fixed left-0 top-0 flex flex-col py-8 z-[60]">
+<div class="px-6 mb-12">
+<h1 class="text-xl font-bold tracking-widest uppercase text-[#b6c4ff]">Vinyl Vault</h1>
+<p class="text-neutral-500 text-[10px] mt-1 tracking-[0.2em] uppercase">Inventory Manager</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<!-- Active Tab: Dashboard -->
+<a class="text-[#b6c4ff] bg-[#2a2a2a] border-r-4 border-[#0057FF] flex items-center gap-3 px-4 py-3 rounded-l-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-neutral-500 hover:text-neutral-200 hover:bg-[#2a2a2a] flex items-center gap-3 px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="text-neutral-500 hover:text-neutral-200 hover:bg-[#2a2a2a] flex items-center gap-3 px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span>Orders</span>
+</a>
+<a class="text-neutral-500 hover:text-neutral-200 hover:bg-[#2a2a2a] flex items-center gap-3 px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Order
+            </button>
+</div>
+</aside>
+<!-- TopAppBar (Authority: JSON) -->
+<header class="bg-neutral-900/60 dark:bg-[#131313]/60 backdrop-blur-xl fixed top-0 right-0 w-[calc(100%-16rem)] z-50 flex items-center justify-between px-8 h-20 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-none focus:ring-2 focus:ring-[#0057FF]/50 rounded-lg pl-12 pr-4 py-2 text-sm text-on-surface placeholder:text-neutral-600 transition-all" placeholder="Search catalog, UPC, or customer orders..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-neutral-400">
+<button class="hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface leading-none">Store Manager</p>
+<p class="text-[10px] text-neutral-500 mt-1">Sonic Architect</p>
+</div>
+<img alt="Store Manager" class="w-10 h-10 rounded-full object-cover border-2 border-primary-container/30" data-alt="Professional studio portrait of a man with focused expression, creative director style, cinematic moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbFKtoodbo9A8ejYsHRmN0Dz-H3WRUCKpEBa3qbbymGBtGGqRdUAQi_FyExNo0-KURX87A-ex97lUacIODWvxnX9MPuOq6XSxdoRED_rwdYpxVcEzCtpn3wXbbHTlNcxT2xXekftaazJvWAZAeSnnXjrvpkbKI6O_zFstzk9h5w85atkLuQMn5rEErMk5keUosYRR9a9EXvsPSEd-WbM2Xeh1Ktml9nZlydSJ_ZwKidO4UPK7KTEvdqFYNt9qV_wzVIvryHM-mmWQ"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-8 pb-12 min-h-screen bg-surface">
+<!-- Hero Metrics (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Sell-Through -->
+<div class="bg-surface-container-high p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container-highest transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="text-neutral-500 text-xs font-bold tracking-widest uppercase">Sell-Through Rate</span>
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface">78.4%</span>
+<span class="text-xs text-green-400 font-bold">+2.1%</span>
+</div>
+<div class="groove-track mt-4">
+<div class="groove-indicator w-[78.4%]"></div>
+</div>
+</div>
+<!-- Gross Margin -->
+<div class="bg-surface-container-high p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container-highest transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="text-neutral-500 text-xs font-bold tracking-widest uppercase">Gross Margin</span>
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface">34.2%</span>
+</div>
+<div class="groove-track mt-4">
+<div class="groove-indicator w-[34.2%]"></div>
+</div>
+</div>
+<!-- Aged Stock -->
+<div class="bg-surface-container-high p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container-highest transition-colors border-t-2 border-secondary/20">
+<div class="flex justify-between items-start mb-4">
+<span class="text-neutral-500 text-xs font-bold tracking-widest uppercase">Aged Stock</span>
+<span class="material-symbols-outlined text-secondary" data-icon="history">history</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-secondary">124</span>
+<span class="text-xs text-secondary-fixed-dim uppercase tracking-tighter">&gt;90 days</span>
+</div>
+<p class="text-[10px] text-neutral-500 mt-4 leading-relaxed italic">Inventory requiring markdown or promotion</p>
+</div>
+<!-- Pending ETAs -->
+<div class="bg-surface-container-high p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container-highest transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="text-neutral-500 text-xs font-bold tracking-widest uppercase">Drop-Ship ETAs</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="local_shipping">local_shipping</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface">15</span>
+<span class="text-xs text-tertiary font-bold">Avg 4.2d</span>
+</div>
+<div class="flex gap-1 mt-4">
+<div class="h-1 flex-1 bg-tertiary rounded-full"></div>
+<div class="h-1 flex-1 bg-tertiary rounded-full"></div>
+<div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Data Section -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<!-- Section 1: Fast-Movers In-Stock (3/5 width) -->
+<section class="lg:col-span-3">
+<div class="flex items-end justify-between mb-6 px-2">
+<div>
+<h2 class="text-2xl font-black tracking-tighter text-on-surface">Fast-Movers In-Stock</h2>
+<p class="text-neutral-500 text-sm">Top performing SKUs currently in the warehouse</p>
+</div>
+<button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline">Full Inventory</button>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-2xl">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-high/50 text-neutral-400 text-[10px] uppercase tracking-[0.2em]">
+<th class="px-6 py-4 font-black">Album / Artist</th>
+<th class="px-6 py-4 font-black">Format</th>
+<th class="px-6 py-4 font-black text-center">Qty</th>
+<th class="px-6 py-4 font-black text-right">Velocity</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-neutral-800 overflow-hidden flex-shrink-0">
+<img alt="Album Art" class="w-full h-full object-cover" data-alt="Abstract minimalist vinyl album cover art, dark atmospheric colors, neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMJKT6gpPPuqI402YVAvSiuNB8W-zXNnl5DiiyadexbB0X_IBDbZen_PKb3X_THkergvy7XE0AgETU2y42mBqaGmx1PmbxDRzGUZfGRcO_o-0nYSQudDtnN8VNl7qdXiz4wLpgsMil50kg1Uynp3cmc6gUaXSaAacMqe8LybW4vRs7wyKo-ge_XRon_fa1wRGVG826v4SzTyZ_DxdvknkJ8AD99Ey2YZTjh54HpZm8ih2dSN3hDm0Gn62Ly_hx1NoC9Y8Ea1WkyYU"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Midnight City</p>
+<p class="text-xs text-neutral-500">The Architect Collective</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-neutral-300">LP / 180g Silver</td>
+<td class="px-6 py-4 text-center font-mono text-sm">42</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-primary/10 text-primary text-[10px] font-black px-2 py-1 rounded">HIGH</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-neutral-800 overflow-hidden flex-shrink-0">
+<img alt="Album Art" class="w-full h-full object-cover" data-alt="Macro photo of vinyl record grooves with blue light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjNu_gpdI9R5BxDDiNGZWNG5faZ2P0OehNNN3vRlDAGF1s1WSdh8rz8rug2qMGUWZv_t-IKOPUlK7x0QPd0TrkhLgft1Lv70oz369CfwZUKnaqR0OjpDZU8S0vnnscMawpj3z5DPh_h1MZkbqlj0bmu0fi9iy7yMh5sBCUXlXBfmdlONeeFCnf89sW-G2XeXVo7RhcUOOCvo-q2xOpuo5DTrJT-mnWC11T2kqAZLXndihEzyDozK37nf1stbsxEGvLT74AhipGe1Q"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Sonic Bloom</p>
+<p class="text-xs text-neutral-500">Electric Flora</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-neutral-300">2LP / Translucent Red</td>
+<td class="px-6 py-4 text-center font-mono text-sm">18</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-primary/10 text-primary text-[10px] font-black px-2 py-1 rounded">STEADY</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-neutral-800 overflow-hidden flex-shrink-0">
+<img alt="Album Art" class="w-full h-full object-cover" data-alt="Daft Punk style music studio equipment, synthesizers, glowing lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgfjmV_RjvJU-R65OKwa49GLmWUiQlQ7fCD_lOQg54EYscKwcJGE-fTlatrY0wHBdryLMvcs-tXBy5RaNiuq0NTrrLdhGbYxcGlpQhmYAFXSbKip2lYP4yI_slNn5cIQzWR-mYtE-hJusHRZU1VzS5MY-lKnorRHNzohXQ5uEYxx_s9NAfJDKcD0JiKryO8k6cCbkrSlpo9jkdxMSjjSBh1Tjmgvi3wJWvMx4EQwfUlpfgeNR99x7DzggurTIOaZ53RzcRMKK_RL0"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Vibration Theory</p>
+<p class="text-xs text-neutral-500">Analog Souls</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-medium text-neutral-300">LP / Standard Black</td>
+<td class="px-6 py-4 text-center font-mono text-sm">65</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-primary/10 text-primary text-[10px] font-black px-2 py-1 rounded">BREAKOUT</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 2: Drop-Ship Long-Tail (2/5 width) -->
+<section class="lg:col-span-2">
+<div class="flex items-end justify-between mb-6 px-2">
+<div>
+<h2 class="text-2xl font-black tracking-tighter text-on-surface">Drop-Ship Long-Tail</h2>
+<p class="text-neutral-500 text-sm">External supplier fulfillment tracking</p>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Tracking Card 1 -->
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-primary shadow-xl">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="text-sm font-bold text-on-surface">The Velvet Underground &amp; Nico</h4>
+<p class="text-xs text-neutral-500">Supplier: VinylDistro Corp</p>
+</div>
+<span class="text-[10px] bg-primary/20 text-primary font-bold px-2 py-1 rounded uppercase">In Transit</span>
+</div>
+<div class="flex items-center justify-between text-[11px] text-neutral-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span> ETA: 2 Days</span>
+<span class="font-mono text-primary-container">#TRK-882190</span>
+</div>
+</div>
+<!-- Tracking Card 2 -->
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-secondary shadow-xl">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="text-sm font-bold text-on-surface">Pink Floyd: The Wall</h4>
+<p class="text-xs text-neutral-500">Supplier: Global Sound</p>
+</div>
+<span class="text-[10px] bg-secondary/20 text-secondary font-bold px-2 py-1 rounded uppercase">Backordered</span>
+</div>
+<div class="flex items-center justify-between text-[11px] text-neutral-400">
+<span class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-xs" data-icon="warning">warning</span> ETA: 14+ Days</span>
+<span class="font-mono">#TRK-PENDING</span>
+</div>
+</div>
+<!-- Tracking Card 3 -->
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-primary shadow-xl opacity-80">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="text-sm font-bold text-on-surface">Radiohead: Kid A Mnesia</h4>
+<p class="text-xs text-neutral-500">Supplier: XL Recordings</p>
+</div>
+<span class="text-[10px] bg-primary/20 text-primary font-bold px-2 py-1 rounded uppercase">Processing</span>
+</div>
+<div class="flex items-center justify-between text-[11px] text-neutral-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="history">history</span> ETA: 5 Days</span>
+<span class="font-mono">#TRK-44100</span>
+</div>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-outline-variant/30 rounded-xl text-neutral-500 text-xs font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
+                        Sync Supplier Portals
+                    </button>
+</div>
+</section>
+</div>
+<!-- System Status Footer Overlay (Subtle) -->
+<footer class="mt-16 flex items-center justify-between px-2 text-[10px] uppercase tracking-widest text-neutral-600 font-bold border-t border-white/5 pt-8">
+<div class="flex gap-8">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Cloud Sync Active</span>
+<span>DB Latency: 12ms</span>
+<span>Last Scan: 2m ago</span>
+</div>
+<div class="flex gap-4">
+<a class="hover:text-primary" href="#">System Logs</a>
+<a class="hover:text-primary" href="#">Support Ticket</a>
+</div>
+</footer>
+</main>
+</body></html>
